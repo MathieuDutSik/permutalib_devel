@@ -1152,7 +1152,7 @@ DeclareRepresentation( "IsFactoredTransversalRep",
     IsRightTransversalRep,
     [ "transversals", "moduli" ] );
 
-    # group, subgroup, list of transversals (descending)
+# group, subgroup, list of transversals (descending)
 BindGlobal("FactoredTransversal",function(G,S,t)
 local trans,m,i;
   Assert(1,ForAll([1..Length(t)-1],i->t[i]!.subgroup=t[i+1]!.group));

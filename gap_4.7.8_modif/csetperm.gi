@@ -59,8 +59,6 @@ BindGlobal( "RightTransversalPermGroupConstructor", function( filter, G, U )
 	UCC:=UC;
         while    Length( GCC.genlabels ) <> 0
               or Length( UCC.genlabels ) <> 0  do
-#Print(SizeStabChain(GCC),"/",SizeStabChain(UCC),":",
-#  SizeStabChain(GCC)/SizeStabChain(UCC),"\n");
           if noyet and (
 	  (SizeStabChain(GCC)/SizeStabChain(UCC)*10 >MAX_SIZE_TRANSVERSAL) or
 	  (Length(UCC.genlabels)=0 and
@@ -79,7 +77,6 @@ BindGlobal( "RightTransversalPermGroupConstructor", function( filter, G, U )
 	    if Length(nc)>2 then
 	      ac:=[];
 	      for i in [Length(nc),Length(nc)-1..2] do
-		Info(InfoCoset,4,"Recursive [",Size(nc[i]),",",Size(nc[i-1]));
 		Add(ac,RightTransversal(nc[i],nc[i-1]
 		      # do not try to factor again
 		      :noascendingchain));
@@ -145,9 +142,9 @@ InstallMethod( RightTransversalOp,
     IsIdenticalObj,
     [ IsPermGroup, IsPermGroup ], 0,
     function( G, U )
-    return RightTransversalPermGroupConstructor(
-               IsRightTransversalPermGroupRep, G, U );
-end );
+        Print("csetperm : Before RightTransversalPermGroupConstructor\n");
+        return RightTransversalPermGroupConstructor( IsRightTransversalPermGroupRep, G, U );
+    end );
 
 
 #############################################################################
